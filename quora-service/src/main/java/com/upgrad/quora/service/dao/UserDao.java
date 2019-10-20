@@ -52,8 +52,7 @@ public class UserDao {
 
     public UserAuthEntity getUserAuthToken(final String accessToken){
         try{
-            UserAuthEntity userAuthEntity = entityManager.createNamedQuery("userAuthByAccessToken",
-                    UserAuthEntity.class).setParameter("accessToken",accessToken).getSingleResult();
+            UserAuthEntity userAuthEntity = entityManager.createNamedQuery("userAuthByAccessToken",UserAuthEntity.class).setParameter("accessToken",accessToken).getSingleResult();
             return userAuthEntity;
 
         }catch (NoResultException nre){
@@ -69,4 +68,10 @@ public class UserDao {
         }
 
     }
+
+    public UserEntity deleteUser ( UserEntity userEntity){
+        entityManager.remove(userEntity);
+        return userEntity;
+    }
+
 }
