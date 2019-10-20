@@ -85,6 +85,7 @@ public class UserBusinessService {
         }
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public UserAuthEntity signout(final String authorizationToken) throws SignOutRestrictedException {
         UserAuthEntity userAuthEntity = userDao.getUserAuthToken(authorizationToken);
 

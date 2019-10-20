@@ -22,7 +22,7 @@ public class CommonController {
     public ResponseEntity<UserDetailsResponse> getUser(@PathVariable("userId") final String userId,
                                                        @RequestHeader("authorization") final String authorization) throws AuthorizationFailedException, UserNotFoundException {
 
-        String[] bearerToken = authorization.split("Bearer");
+        String[] bearerToken = authorization.split("Bearer ");
 
         UserEntity userEntity = commonBusinessService.getUser(userId,bearerToken[1]);
 
